@@ -217,6 +217,19 @@ class EditForm extends Form
         ));
 
         $this->add(array(
+            'name' => 'euf-state',
+            'type' => 'Select',
+            'attributes' => array(
+                'id' => 'euf-state',
+            ),
+            'options' => array(
+                'label' => 'Fitness-State',
+                'value_options' => array_merge( ['-' => '-'], User::$stateOptions ),
+                'notes' => 'These are only visible for administration',
+            ),
+        ));
+        
+        $this->add(array(
             'name' => 'euf-submit',
             'type' => 'Submit',
             'attributes' => array(
@@ -450,6 +463,12 @@ class EditForm extends Form
                 ),
             ),
             'euf-notes' => array(
+                'required' => false,
+                'filters' => array(
+                    array('name' => 'StringTrim'),
+                ),
+            ),
+            'euf-state' => array(
                 'required' => false,
                 'filters' => array(
                     array('name' => 'StringTrim'),

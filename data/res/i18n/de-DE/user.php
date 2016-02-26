@@ -83,6 +83,11 @@ return array(
     'Mrs' => 'Frau',
     'Family' => 'Familie',
     'Firm' => 'Firma',
+    
+    'beginner' => 'Anfänger',
+    'user' => 'normal fit',
+    'poweruser' => 'extrem fit',
+    'trainer' => 'Trainer-Status',
 
     'May manage users' => 'Darf Benutzer verwalten',
     'May manage bookings' => 'Darf Buchungen verwalten',

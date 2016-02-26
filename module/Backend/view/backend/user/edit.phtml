@@ -190,6 +190,16 @@ $this->headScript()->appendFile($this->basePath('js/controller/backend/user/edit
                         <?= $this->formElementErrors($form->get('euf-notes')) ?>
                     </td>
                 </tr>
+                <tr>
+                    <td class="default-form-label-row">
+                        <?= $this->formLabel($form->get('euf-state')) ?>
+                    </td>
+                    <td>
+                        <?= $this->formElement($form->get('euf-state')) ?>
+                        <?= $this->formElementNotes($form->get('euf-state')) ?>
+                        <?= $this->formElementErrors($form->get('euf-state')) ?>
+                    </td>
+                </tr>
             </table>
         </div>
 

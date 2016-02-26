@@ -82,6 +82,37 @@ class User extends AbstractEntity
     }
 
     /**
+     * The possible fitness state options.
+     *
+     * @var array
+     */
+    public static $stateOptions = array(
+        'trainer' => 'trainer',
+        'high' => 'poweruser',
+        'normal' => 'user',
+        'low' => 'beginner',
+    );
+
+    /**
+     * Returns the gender string.
+     *
+     * @return string
+     */
+    public function getState($default = null)
+    {
+        $state = $this->getMeta('state');
+
+        if (is_null($state)) {
+            return $default;
+        }
+
+        if (isset(self::$stateOptions[$state])) {
+            return self::$stateOptions[$state];
+        } else {
+            return 'Unknown';
+        }
+    }    
+    /**
      * The possible privileges.
      *
      * @var array

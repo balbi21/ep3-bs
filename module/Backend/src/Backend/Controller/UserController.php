@@ -151,6 +151,7 @@ class UserController extends AbstractActionController
                 $user->setMeta('phone', $eud['euf-phone']);
                 $user->setMeta('birthdate', $eud['euf-birthdate']);
                 $user->setMeta('notes', $eud['euf-notes']);
+                $user->setMeta('state', $eud['euf-state']);
 
                 $userManager->save($user);
 
@@ -187,6 +188,7 @@ class UserController extends AbstractActionController
                     'euf-phone' => $user->getMeta('phone'),
                     'euf-birthdate' => $user->getMeta('birthdate'),
                     'euf-notes' => $user->getMeta('notes'),
+                    'euf-state' => $user->getMeta('state'),
                 ));
             }
         }
