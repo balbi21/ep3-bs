@@ -243,6 +243,18 @@ a.cc-single:link,
 a.cc-single:visited { opacity: 1.0; color: #FFF; background-color: #808D96; }
 a.cc-single:hover { background-color: #4C5359; }
 
+a.cc-singleA:link,
+a.cc-singleA:visited { opacity: 1.0; color: #FFF; background-color: #CEF6CE; }
+a.cc-singleA:hover { background-color: #A9F5BC; }
+
+a.cc-singleB:link,
+a.cc-singleB:visited { opacity: 1.0; color: #FFF; background-color: #F3E2A9; }
+a.cc-singleB:hover { background-color: #F5DA81; }
+
+a.cc-singleC:link,
+a.cc-singleC:visited { opacity: 1.0; color: #FFF; background-color: #F5A9A9; }
+a.cc-singleC:hover { background-color: #F78181; }
+
 a.cc-multiple:link,
 a.cc-multiple:visited { opacity: 1.0; color: #FFF; background-color: #547B97; }
 a.cc-multiple:hover { background-color: #334F6A; }

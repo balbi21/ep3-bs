@@ -22,7 +22,7 @@ class OccupiedForPrivileged extends AbstractHelper
         $reservationsCount = count($reservations);
 
         if ($reservationsCount > 1) {
-            return $view->calendarCellLink($this->view->t('Occupied'), $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-single');
+            return $view->calendarCellLink($this->view->t('Occupied'), $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-singleA');
         } else {
             $reservation = current($reservations);
             $booking = $reservation->needExtra('booking');
@@ -34,12 +34,25 @@ class OccupiedForPrivileged extends AbstractHelper
                 $cellStyle = null;
             }
 
+            $fitnessstate = $booking->needExtra('user')->getState();
             $cellLabel = $booking->needExtra('user')->need('alias');
+            
             $cellGroup = ' cc-group-' . $booking->need('bid');
 
             switch ($booking->need('status')) {
                 case 'single':
-                    return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-single' . $cellGroup, null, $cellStyle);
+                    switch($fitnessstate){
+                        case 'trainer':
+                            return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-single' . $cellGroup, null, $cellStyle);
+                        case 'poweruser':
+                            return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-singleA' . $cellGroup, null, $cellStyle);
+                        case 'user':
+                            return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-singleB' . $cellGroup, null, $cellStyle);
+                        case 'beginner':
+                            return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-singleC' . $cellGroup, null, $cellStyle);
+                        default:
+                            return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-single' . $cellGroup, null, $cellStyle);
+                    }
                 case 'subscription':
                     return $view->calendarCellLink($cellLabel, $view->url('backend/booking/edit', [], $cellLinkParams), 'cc-multiple' . $cellGroup, null, $cellStyle);
             }
