@@ -54,7 +54,7 @@ class NotificationListener extends AbstractListenerAggregate
     {
         $booking = $event->getTarget();
         $reservation = current($booking->getExtra('reservations'));
-        $square = $this->squareManager->get($booking->need('sid'));
+        $square = $this->squareManager->get($booking->get('sid'));
         $user = $this->userManager->get($booking->need('uid'));
 
         $dateFormatHelper = $this->dateFormatHelper;

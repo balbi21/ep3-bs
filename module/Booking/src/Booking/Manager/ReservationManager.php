@@ -228,7 +228,16 @@ class ReservationManager extends AbstractManager
                 throw new InvalidArgumentException('Maximum date range exceeded');
             }
 
-            $square = $this->squareManager->get($booking->need('sid'));
+            $sid = $booking->get('sid');
+            $square = NULL;
+            if($sid == NULL)
+            {
+                $square = $this->squareManager->get(1); // first Square
+            }
+            else
+            {
+                $square = $this->squareManager->get($sid);
+            }
 
             $reservations = array();
 

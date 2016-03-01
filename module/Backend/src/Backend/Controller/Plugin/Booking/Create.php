@@ -62,12 +62,21 @@ class Create extends AbstractPlugin
 
             /* Determine square */
 
-            if ($square instanceof Square) {
-                $square = $this->squareManager->get($square->get('sid'));
-            } else {
-                $square = $this->squareManager->get($square);
+            if ($square == 0)
+            {
+                $sid = NULL;
             }
-
+            else
+            {
+                if ($square instanceof Square) {
+                    $square = $this->squareManager->get($square->get('sid'));
+                } else {
+                    $square = $this->squareManager->get($square);
+                }
+                
+                $sid = $square->get('sid');
+            }
+            
             /* Determine status */
 
             $repeat = intval($repeat);
@@ -110,7 +119,7 @@ class Create extends AbstractPlugin
 
             $booking = new Booking(array(
                 'uid' => $user->need('uid'),
-                'sid' => $square->need('sid'),
+                'sid' => $sid,
                 'status' => $status,
                 'status_billing' => $statusBilling,
                 'visibility' => $visibility,

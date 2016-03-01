@@ -46,7 +46,9 @@ class EditForm extends Form
             ),
         ));
 
-        $squareOptions = array();
+        $squareOptions = array(
+             'null' => 'All squares',
+            );
 
         foreach ($this->squareManager->getAll() as $sid => $square) {
             $squareOptions[$sid] = $square->get('name');

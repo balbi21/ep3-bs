@@ -110,7 +110,7 @@ class BookingManager extends AbstractManager
                 $this->bookingTable->insert(array(
                     'bid' => $bid,
                     'uid' => $booking->need('uid'),
-                    'sid' => $booking->need('sid'),
+                    'sid' => $booking->get('sid'),
                     'status' => $booking->need('status'),
                     'status_billing' => $booking->need('status_billing'),
                     'visibility' => $booking->need('visibility'),

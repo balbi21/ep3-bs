@@ -61,7 +61,7 @@ class BookingService extends AbstractService
 
             $booking = new Booking(array(
                 'uid' => $user->need('uid'),
-                'sid' => $square->need('sid'),
+                'sid' => $square->get('sid'),
                 'status' => 'single',
                 'status_billing' => 'pending',
                 'visibility' => 'public',

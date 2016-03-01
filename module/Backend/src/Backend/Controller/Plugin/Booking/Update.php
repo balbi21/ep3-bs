@@ -73,16 +73,24 @@ class Update extends AbstractPlugin
 
                 /* Determine square */
 
-                if ($newSquare instanceof Square) {
-                    $square = $this->squareManager->get($newSquare->get('sid'));
-                } else {
-                    $square = $this->squareManager->get($newSquare);
+                if($sqaure == 0)
+                {
+                    $sid = NULL;
                 }
-
+                else
+                {
+                    if ($newSquare instanceof Square) {
+                        $square = $this->squareManager->get($newSquare->get('sid'));
+                    } else {
+                        $square = $this->squareManager->get($newSquare);
+                    }
+                    $sid = $square->get('sid');
+                }
+                
                 /* Save booking */
 
                 $booking->set('uid', $user->need('uid'));
-                $booking->set('sid', $square->need('sid'));
+                $booking->set('sid', $sid);
                 $booking->set('status_billing', $newStatusBilling);
                 $booking->set('quantity', $newQuantity);
                 $booking->setMeta('notes', $newNotes);
